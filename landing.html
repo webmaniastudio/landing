@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0d1016" />
+  <title>NovaTech | لندینگ کمپین</title>
+
+  <!-- Persian font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/landing.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#home" class="logo" aria-label="لوگو"><span class="mark"></span><span>Web mania</span></a>
+      <nav class="primary-nav" aria-label="ناوبری">
+        <a href="#offer">پیشنهاد</a>
+        <a href="#highlights">مزایا</a>
+        <a href="#showcase">نتایج</a>
+        <a href="#testimonials">نظرات</a>
+        <a href="#faq">سوالات</a>
+        <a href="#lead" class="nav-cta">ثبت‌نام</a>
+      </nav>
+      <div class="header-actions">
+        <!-- pill toggle -->
+        <button id="theme-toggle" class="toggle-pill" role="switch" aria-checked="true" aria-label="تغییر تم">
+          <span class="pill"><span class="knob"></span></span>
+          <span class="t-label t-dark">تیره</span>
+          <span class="t-label t-light">روشن</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <div class="hero-copy" data-reveal>
+        <span class="eyebrow">کمپین محدود • تخفیف ویژه</span>
+        <h1>لندینگ قدرتمند برای تبدیل بالاتر کمپین</h1>
+        <p>طراحی سریع، بهینه و اثرگذار؛ آماده اتصال به آنالیتیکس، پیکسل‌ها و اتوماسیون. روی نرخ تبدیل تمرکز کن، نه دردسر فنی.</p>
+        <div class="hero-cta">
+          <a href="#lead" class="btn btn-primary">دریافت کد تخفیف</a>
+          <a href="#offer" class="btn btn-secondary">جزئیات پیشنهاد</a>
+        </div>
+        <ul class="hero-points">
+          <li>راه‌اندازی ۲۴–۷۲ ساعته</li>
+          <li>سئو و سرعت آماده</li>
+          <li>A/B تست‌پذیر</li>
+        </ul>
+      </div>
+
+      <!-- Collage images -->
+      <div class="hero-art" data-reveal>
+        <figure class="collage">
+          <img src="https://picsum.photos/seed/collage-a/640/420" alt="پیش‌نمایش بخش قهرمان" width="640" height="420" loading="eager" fetchpriority="high" decoding="async">
+          <img src="https://picsum.photos/seed/collage-b/360/420" alt="کارت مزایا" width="360" height="420" loading="lazy" decoding="async">
+          <img src="https://picsum.photos/seed/collage-c/420/520" alt="نمونه نتایج" width="420" height="520" loading="lazy" decoding="async">
+        </figure>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- Trust logos -->
+  <section class="trust">
+    <div class="container trust-logos" aria-label="مشتریان">
+      <img src="https://placehold.co/120x40?text=Brand+A&bg=666&fg=fff" alt="Brand A" width="120" height="40" loading="lazy" decoding="async">
+      <img src="https://placehold.co/120x40?text=Brand+B&bg=666&fg=fff" alt="Brand B" width="120" height="40" loading="lazy" decoding="async">
+      <img src="https://placehold.co/120x40?text=Brand+C&bg=666&fg=fff" alt="Brand C" width="120" height="40" loading="lazy" decoding="async">
+      <img src="https://placehold.co/120x40?text=Brand+D&bg=666&fg=fff" alt="Brand D" width="120" height="40" loading="lazy" decoding="async">
+      <img src="https://placehold.co/120x40?text=Brand+E&bg=666&fg=fff" alt="Brand E" width="120" height="40" loading="lazy" decoding="async">
+      <img src="https://placehold.co/120x40?text=Brand+F&bg=666&fg=fff" alt="Brand F" width="120" height="40" loading="lazy" decoding="async">
+    </div>
+  </section>
+
+  <!-- Offer -->
+  <section class="section" id="offer">
+    <div class="container">
+      <div class="section-title" data-reveal>
+        <h2>پیشنهاد ویژه کمپین</h2>
+        <span class="muted">سریع‌تر راه‌اندازی کن و بهتر تبدیل بگیر</span>
+      </div>
+      <div class="grid cols-2">
+        <div class="card offer-card" data-reveal>
+          <div class="shine"></div>
+          <div class="offer-head">
+            <b>۲۰٪ تخفیف</b>
+            <span>برای سفارش‌های این هفته</span>
+          </div>
+          <ul class="muted" style="margin:8px 0 12px; padding-inline-start:18px">
+            <li>لندینگ واکنش‌گرا با تم سفارشی</li>
+            <li>اتصال به GA4/GTM/Pixel</li>
+            <li>فرم لید با اعتبارسنجی</li>
+            <li>استیکی CTA + شمارش‌معکوس</li>
+          </ul>
+          <div class="coupon">
+            <code id="coupon-code">NEW20</code>
+            <button class="btn btn-ghost" id="copy-coupon" aria-label="کپی کد">کپی</button>
+          </div>
+          <div class="countdown" id="countdown" data-deadline="">
+            <div class="cd-box"><b data-unit="days">00</b><span>روز</span></div>
+            <div class="cd-box"><b data-unit="hours">00</b><span>ساعت</span></div>
+            <div class="cd-box"><b data-unit="minutes">00</b><span>دقیقه</span></div>
+            <div class="cd-box"><b data-unit="seconds">00</b><span>ثانیه</span></div>
+          </div>
+        </div>
+        <div class="card" data-reveal>
+          <div class="shine"></div>
+          <img src="https://picsum.photos/seed/offer-visual-2/1200/800" alt="پیشنهاد کمپین" width="1200" height="800" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Highlights -->
+  <section class="section" id="highlights">
+    <div class="container">
+      <div class="section-title" data-reveal>
+        <h2>مزیت‌های کلیدی</h2>
+        <span class="muted">آنچه نرخ تبدیل را بالا می‌برد</span>
+      </div>
+      <div class="grid cols-3">
+        <div class="card" data-reveal><div class="shine"></div><b>تیتر و پیام واضح</b><p class="muted">کپی‌نویسی تست‌شده برای جذب سریع توجه.</p></div>
+        <div class="card" data-reveal><div class="shine"></div><b>CTA برجسته</b><p class="muted">کال‌تو‌اکشن‌های به‌جا در نقاط کلیدی.</p></div>
+        <div class="card" data-reveal><div class="shine"></div><b>بارگذاری سریع</b><p class="muted">بهینه‌سازی تصاویر و منابع برای LCP پایین.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Showcase -->
+  <section class="section" id="showcase">
+    <div class="container">
+      <div class="section-title" data-reveal>
+        <h2>نتایج واقعی</h2>
+        <span class="muted">نمونه‌های موفق اخیر</span>
+      </div>
+      <div class="grid cols-3">
+        <a class="card" data-reveal href="#"><div class="shine"></div><img src="https://picsum.photos/seed/show-1/1200/800" alt="Case A" width="1200" height="800" loading="lazy"><b>CTR +58%</b><p class="muted">بهبود طراحی هیرو و CTA</p></a>
+        <a class="card" data-reveal href="#"><div class="shine"></div><img src="https://picsum.photos/seed/show-2/1200/800" alt="Case B" width="1200" height="800" loading="lazy"><b>CPA -27%</b><p class="muted">بهینه‌سازی فرم و اعتبارسنجی</p></a>
+        <a class="card" data-reveal href="#"><div class="shine"></div><img src="https://picsum.photos/seed/show-3/1200/800" alt="Case C" width="1200" height="800" loading="lazy"><b>Conversion +35%</b><p class="muted">آزمایش A/B روی پیام</p></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section" id="testimonials">
+    <div class="container">
+      <div class="section-title" data-reveal>
+        <h2>نظرات مشتریان</h2>
+        <span class="muted">کیفیت، سرعت، نتیجه</span>
+      </div>
+      <div class="grid cols-3">
+        <div class="card testimonial" data-reveal><div class="shine"></div>
+          <div class="t-row">
+            <div class="avatar" style="background-image:url('https://picsum.photos/seed/ava11/100/100')"></div>
+            <div><b>الهام راد</b><div class="muted">Growth Lead</div><p>CTR کمپین ۱.۸ برابر شد و لیدهای سالم‌تر گرفتیم.</p></div>
+          </div>
+        </div>
+        <div class="card testimonial" data-reveal><div class="shine"></div>
+          <div class="t-row">
+            <div class="avatar" style="background-image:url('https://picsum.photos/seed/ava22/100/100')"></div>
+            <div><b>کسری بهرامی</b><div class="muted">CMO</div><p>راه‌اندازی سریع و نتایج قابل اندازه‌گیری.</p></div>
+          </div>
+        </div>
+        <div class="card testimonial" data-reveal><div class="shine"></div>
+          <div class="t-row">
+            <div class="avatar" style="background-image:url('https://picsum.photos/seed/ava33/100/100')"></div>
+            <div><b>رها صمدی</b><div class="muted">Product</div><p>پیام روشن و طراحی مینیمال تاثیرگذار بود.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="container container-narrow faq">
+      <div class="section-title" data-reveal>
+        <h2>سوالات پرتکرار</h2>
+        <span class="muted">اگر سوالی خارج از این موارد دارید، بپرسید</span>
+      </div>
+      <details class="card" data-reveal><summary>چقدر طول می‌کشه بالا بیاد؟</summary><p>۲۴ تا ۷۲ ساعت بسته به شخصی‌سازی.</p></details>
+      <details class="card" data-reveal><summary>به چه ابزارهایی وصل می‌شه؟</summary><p>GA4، GTM، Meta Pixel و هر وب‌هوک دلخواه.</p></details>
+      <details class="card" data-reveal><summary>هاست و دامنه با شماست؟</summary><p>می‌تونه با شما یا با ما باشه؛ گزینه استقرار سریع داریم.</p></details>
+    </div>
+  </section>
+
+  <!-- Lead form -->
+  <section class="section" id="lead">
+    <div class="container">
+      <div class="section-title" data-reveal>
+        <h2>ثبت‌نام در کمپین</h2>
+        <span class="muted">فرم کوتاه، پاسخ سریع</span>
+      </div>
+      <div class="grid cols-2">
+        <form id="lead-form" class="card form" data-reveal novalidate>
+          <div class="shine"></div>
+          <div class="field"><label for="name">نام و نام خانوادگی</label><input id="name" name="name" class="input" required placeholder="مثلاً: علی محمدی"></div>
+          <div class="field"><label for="phone">شماره تماس</label><input id="phone" name="phone" class="input" required inputmode="tel" pattern="^[0-9+\-\s()]{7,}$" placeholder="09xxxxxxxxx"></div>
+          <div class="field"><label for="email">ایمیل</label><input id="email" name="email" type="email" class="input" placeholder="you@example.com"></div>
+          <div class="field"><label for="notes">توضیحات</label><textarea id="notes" name="notes" rows="4" placeholder="برای چه کمپینی می‌خواید..."></textarea></div>
+          <label class="consent"><input type="checkbox" id="consent" required> قوانین و حریم خصوصی را می‌پذیرم.</label>
+          <button class="btn btn-primary" type="submit">دریافت پیشنهاد</button>
+        </form>
+        <div class="card" data-reveal>
+          <div class="shine"></div>
+          <img src="https://picsum.photos/seed/lead-visual-2/1200/800" alt="ثبت‌نام کمپین" width="1200" height="800" loading="lazy" decoding="async">
+          <ul class="muted" style="margin:10px 0 0; padding-inline-start:18px">
+            <li>پاسخ‌گویی زیر ۲۴ ساعت</li>
+            <li>مشاوره رایگان مسیر کمپین</li>
+            <li>تحویل سریع و شفاف</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sticky CTA -->
+  <div class="sticky-cta" id="sticky-cta">
+    <div class="container sticky-row">
+      <span>فرصت محدود! همین الان ثبت‌نام کن</span>
+      <a href="#lead" class="btn btn-primary">ثبت‌نام</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container cols">
+      <div><div class="logo" style="margin-bottom:8px"><span class="mark"></span><span>NovaTech</span></div><p class="muted">لندینگ‌های سریع و اثرگذار برای کمپین‌های شما.</p></div>
+      <div><b>لینک‌ها</b><ul style="list-style:none; padding:0; margin:8px 0 0"><li><a href="#offer">پیشنهاد</a></li><li><a href="#faq">سوالات</a></li></ul></div>
+      <div><b>ارتباط</b><ul style="list-style:none; padding:0; margin:8px 0 0"><li><a href="mailto:hello@novatech.example">hello@novatech.example</a></li></ul></div>
+    </div>
+  </footer>
+
+  <script src="assets/landing.js"></script>
+</body>
+</html>
