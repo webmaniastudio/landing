@@ -17,15 +17,12 @@
   <!-- Header -->
   <header class="site-header">
     <div class="container header-inner">
-      <a href="#home" class="logo" aria-label="لوگو"><span class="mark"></span><span>Web mania</span></a>
-      <nav class="primary-nav" aria-label="ناوبری">
-        <a href="#offer">پیشنهاد</a>
-        <a href="#highlights">مزایا</a>
-        <a href="#showcase">نتایج</a>
-        <a href="#testimonials">نظرات</a>
-        <a href="#faq">سوالات</a>
-        <a href="#lead" class="nav-cta">ثبت‌نام</a>
-      </nav>
+      <a href="#home" class="logo" aria-label="لوگو">
+        <span class="mark"></span>
+        <span>Web mania</span>
+      </a>
+
+      <!-- فقط اکشن‌ها؛ هیچ منوی دسکتاپی نداریم -->
       <div class="header-actions">
         <!-- pill toggle -->
         <button id="theme-toggle" class="toggle-pill" role="switch" aria-checked="true" aria-label="تغییر تم">
@@ -33,9 +30,26 @@
           <span class="t-label t-dark">تیره</span>
           <span class="t-label t-light">روشن</span>
         </button>
+
+        <!-- hamburger (فقط موبایل) -->
+        <button id="menu-toggle" class="hamburger" aria-label="باز کردن منو" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </header>
+
+  <!-- Mobile Menu (Overlay) -->
+  <nav id="mobile-menu" class="mobile-menu" hidden>
+    <div class="menu-panel container">
+      <a href="#offer">پیشنهاد</a>
+      <a href="#highlights">مزایا</a>
+      <a href="#showcase">نتایج</a>
+      <a href="#testimonials">نظرات</a>
+      <a href="#faq">سوالات</a>
+      <a href="#lead" class="btn btn-primary" style="margin-top:10px">ثبت‌نام</a>
+    </div>
+  </nav>
 
   <!-- Hero -->
   <section class="hero" id="home">
@@ -59,14 +73,14 @@
       <!-- Collage images -->
       <div class="hero-art" data-reveal>
         <figure class="collage">
-          <img src="https://picsum.photos/seed/collage-a/640/420" alt="پیش‌نمایش بخش قهرمان" width="640" height="420" loading="eager" fetchpriority="high" decoding="async">
+          <img src="https://picsum.photos/seed/collage-b/360/420" alt="پیش‌نمایش بخش قهرمان" width="640" height="420" loading="eager" fetchpriority="high" decoding="async">
           <img src="https://picsum.photos/seed/collage-b/360/420" alt="کارت مزایا" width="360" height="420" loading="lazy" decoding="async">
           <img src="https://picsum.photos/seed/collage-c/420/520" alt="نمونه نتایج" width="420" height="520" loading="lazy" decoding="async">
         </figure>
       </div>
     </div>
   </section>
- 
+
   <!-- Trust logos -->
   <section class="trust">
     <div class="container trust-logos" aria-label="مشتریان">
@@ -126,9 +140,21 @@
         <span class="muted">آنچه نرخ تبدیل را بالا می‌برد</span>
       </div>
       <div class="grid cols-3">
-        <div class="card" data-reveal><div class="shine"></div><b>تیتر و پیام واضح</b><p class="muted">کپی‌نویسی تست‌شده برای جذب سریع توجه.</p></div>
-        <div class="card" data-reveal><div class="shine"></div><b>CTA برجسته</b><p class="muted">کال‌تو‌اکشن‌های به‌جا در نقاط کلیدی.</p></div>
-        <div class="card" data-reveal><div class="shine"></div><b>بارگذاری سریع</b><p class="muted">بهینه‌سازی تصاویر و منابع برای LCP پایین.</p></div>
+        <div class="card" data-reveal>
+          <div class="shine"></div>
+          <b>تیتر و پیام واضح</b>
+          <p class="muted">کپی‌نویسی تست‌شده برای جذب سریع توجه.</p>
+        </div>
+        <div class="card" data-reveal>
+          <div class="shine"></div>
+          <b>CTA برجسته</b>
+          <p class="muted">کال‌تو‌اکشن‌های به‌جا در نقاط کلیدی.</p>
+        </div>
+        <div class="card" data-reveal>
+          <div class="shine"></div>
+          <b>بارگذاری سریع</b>
+          <p class="muted">بهینه‌سازی تصاویر و منابع برای LCP پایین.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -156,22 +182,34 @@
         <span class="muted">کیفیت، سرعت، نتیجه</span>
       </div>
       <div class="grid cols-3">
-        <div class="card testimonial" data-reveal><div class="shine"></div>
+        <div class="card testimonial" data-reveal>
+          <div class="shine"></div>
           <div class="t-row">
             <div class="avatar" style="background-image:url('https://picsum.photos/seed/ava11/100/100')"></div>
-            <div><b>الهام راد</b><div class="muted">Growth Lead</div><p>CTR کمپین ۱.۸ برابر شد و لیدهای سالم‌تر گرفتیم.</p></div>
+            <div>
+              <b>الهام راد</b><div class="muted">Growth Lead</div>
+              <p>CTR کمپین ۱.۸ برابر شد و لیدهای سالم‌تر گرفتیم.</p>
+            </div>
           </div>
         </div>
-        <div class="card testimonial" data-reveal><div class="shine"></div>
+        <div class="card testimonial" data-reveal>
+          <div class="shine"></div>
           <div class="t-row">
             <div class="avatar" style="background-image:url('https://picsum.photos/seed/ava22/100/100')"></div>
-            <div><b>کسری بهرامی</b><div class="muted">CMO</div><p>راه‌اندازی سریع و نتایج قابل اندازه‌گیری.</p></div>
+            <div>
+              <b>کسری بهرامی</b><div class="muted">CMO</div>
+              <p>راه‌اندازی سریع و نتایج قابل اندازه‌گیری.</p>
+            </div>
           </div>
         </div>
-        <div class="card testimonial" data-reveal><div class="shine"></div>
+        <div class="card testimonial" data-reveal>
+          <div class="shine"></div>
           <div class="t-row">
             <div class="avatar" style="background-image:url('https://picsum.photos/seed/ava33/100/100')"></div>
-            <div><b>رها صمدی</b><div class="muted">Product</div><p>پیام روشن و طراحی مینیمال تاثیرگذار بود.</p></div>
+            <div>
+              <b>رها صمدی</b><div class="muted">Product</div>
+              <p>پیام روشن و طراحی مینیمال تاثیرگذار بود.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -202,7 +240,7 @@
         <form id="lead-form" class="card form" data-reveal novalidate>
           <div class="shine"></div>
           <div class="field"><label for="name">نام و نام خانوادگی</label><input id="name" name="name" class="input" required placeholder="مثلاً: علی محمدی"></div>
-          <div class="field"><label for="phone">شماره تماس</label><input id="phone" name="phone" class="input" required inputmode="tel" pattern="^[0-9+\-\s()]{7,}$" placeholder="09xxxxxxxxx"></div>
+          <div class="field"><label for="phone">شماره تماس</label><input id="phone" name="phone" class="input" required inputmode="tel" pattern="^[0-9+\\-\\s()]{7,}$" placeholder="09xxxxxxxxx"></div>
           <div class="field"><label for="email">ایمیل</label><input id="email" name="email" type="email" class="input" placeholder="you@example.com"></div>
           <div class="field"><label for="notes">توضیحات</label><textarea id="notes" name="notes" rows="4" placeholder="برای چه کمپینی می‌خواید..."></textarea></div>
           <label class="consent"><input type="checkbox" id="consent" required> قوانین و حریم خصوصی را می‌پذیرم.</label>
@@ -232,13 +270,26 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="container cols">
-      <div><div class="logo" style="margin-bottom:8px"><span class="mark"></span><span>NovaTech</span></div><p class="muted">لندینگ‌های سریع و اثرگذار برای کمپین‌های شما.</p></div>
-      <div><b>لینک‌ها</b><ul style="list-style:none; padding:0; margin:8px 0 0"><li><a href="#offer">پیشنهاد</a></li><li><a href="#faq">سوالات</a></li></ul></div>
-      <div><b>ارتباط</b><ul style="list-style:none; padding:0; margin:8px 0 0"><li><a href="mailto:hello@novatech.example">hello@novatech.example</a></li></ul></div>
+      <div>
+        <div class="logo" style="margin-bottom:8px"><span class="mark"></span><span>NovaTech</span></div>
+        <p class="muted">لندینگ‌های سریع و اثرگذار برای کمپین‌های شما.</p>
+      </div>
+      <div>
+        <b>لینک‌ها</b>
+        <ul style="list-style:none; padding:0; margin:8px 0 0">
+          <li><a href="#offer">پیشنهاد</a></li>
+          <li><a href="#faq">سوالات</a></li>
+        </ul>
+      </div>
+      <div>
+        <b>ارتباط</b>
+        <ul style="list-style:none; padding:0; margin:8px 0 0">
+          <li><a href="mailto:hello@novatech.example">hello@novatech.example</a></li>
+        </ul>
+      </div>
     </div>
   </footer>
 
   <script src="assets/landing.js"></script>
 </body>
-
 </html>

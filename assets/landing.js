@@ -10,7 +10,9 @@ function applyTheme(theme){
   htmlEl.setAttribute('data-theme', theme);
   const isDark = theme === 'dark';
   toggleBtn?.setAttribute('aria-checked', String(isDark));
-  metaTheme?.setAttribute('content', getComputedStyle(htmlEl).getPropertyValue('--bg').trim());
+  // sync meta theme-color with current background
+  const bg = getComputedStyle(htmlEl).getPropertyValue('--bg').trim();
+  metaTheme?.setAttribute('content', bg || '#0d1016');
 }
 function getPreferredTheme(){
   const saved = localStorage.getItem('theme');
@@ -51,7 +53,7 @@ document.querySelectorAll('.card').forEach(card => {
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', (e) => {
     const id = a.getAttribute('href');
-    if (id.length > 1 && document.querySelector(id)) {
+    if (id && id.length > 1 && document.querySelector(id)) {
       e.preventDefault();
       document.querySelector(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
@@ -90,22 +92,28 @@ copyBtn?.addEventListener('click', async () => {
 function initCountdown(){
   const el = document.getElementById('countdown');
   if (!el) return;
-  let deadline = el.dataset.deadline?.trim();
-  let end = deadline ? new Date(deadline) : new Date(Date.now() + 3*24*60*60*1000);
-  function pad(n){return String(n).padStart(2,'0')}
+
+  const deadline = el.dataset.deadline?.trim();
+  const end = deadline ? new Date(deadline) : new Date(Date.now() + 3*24*60*60*1000);
+
+  const DAY = 24*60*60*1000, HOUR = 60*60*1000, MIN = 60*1000;
+  const pad = n => String(n).padStart(2,'0');
+
   function tick(){
-    const now = new Date();
-    let diff = Math.max(0, end - now);
-    const d = Math.floor(diff / (24*60*60*1000)); diff -= d*24*60*60*1000;
-    const h = Math.floor(diff / (60*60*1000)); diff -= h*60*60*1000;
-    const m = Math.floor(diff / (60*1000)); diff -= m*60*1000;
+    const now = Date.now();
+    let diff = Math.max(0, end.getTime() - now);
+
+    const d = Math.floor(diff / DAY); diff -= d * DAY;
+    const h = Math.floor(diff / HOUR); diff -= h * HOUR;
+    const m = Math.floor(diff / MIN); diff -= m * MIN;
     const s = Math.floor(diff / 1000);
+
     el.querySelector('[data-unit="days"]').textContent = pad(d);
     el.querySelector('[data-unit="hours"]').textContent = pad(h);
     el.querySelector('[data-unit="minutes"]').textContent = pad(m);
     el.querySelector('[data-unit="seconds"]').textContent = pad(s);
-    if (end - now <= 0) return;
-    requestAnimationFrame(()=>setTimeout(tick, 250));
+
+    if (end.getTime() - now > 0) requestAnimationFrame(()=>setTimeout(tick, 250));
   }
   tick();
 }
@@ -119,3 +127,35 @@ function onScroll(){
 }
 window.addEventListener('scroll', onScroll, { passive:true });
 onScroll();
+
+// Mobile menu
+const menuBtn = document.getElementById('menu-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+
+menuBtn?.addEventListener('click', () => {
+  const open = !mobileMenu.classList.contains('open');
+  mobileMenu.classList.toggle('open', open);
+  if (open) mobileMenu.removeAttribute('hidden'); else mobileMenu.setAttribute('hidden','');
+  menuBtn.setAttribute('aria-expanded', String(open));
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+
+// Close on click outside or link click
+mobileMenu?.addEventListener('click', (e) => {
+  if (e.target === mobileMenu || (e.target instanceof Element && e.target.matches('a'))) {
+    mobileMenu.classList.remove('open');
+    mobileMenu.setAttribute('hidden','');
+    menuBtn?.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+});
+
+// Close on Escape
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && mobileMenu?.classList.contains('open')) {
+    mobileMenu.classList.remove('open');
+    mobileMenu.setAttribute('hidden','');
+    menuBtn?.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+});

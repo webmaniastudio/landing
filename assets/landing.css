@@ -2,25 +2,27 @@
 *,*::before,*::after{box-sizing:border-box}
 html,body{height:100%}
 body{
-  margin:0; font-family:"Vazirmatn",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans";
-  line-height:1.75; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-  background:var(--bg); color:var(--text); overflow-x:hidden; position:relative;
+  margin:0;
+  font-family:"Vazirmatn",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans";
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  background:var(--bg); color:var(--text);
+  overflow-x:hidden; position:relative;
 }
 /* subtle grid + glow */
 body::before{
-  content:""; position:fixed; inset:0; pointer-events:none;
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:-2;
   background:
     radial-gradient(60% 60% at 85% 10%, color-mix(in oklab, var(--primary) 14%, transparent), transparent 60%),
     radial-gradient(50% 50% at 10% 90%, color-mix(in oklab, var(--primary-2) 12%, transparent), transparent 60%);
-  z-index:-2;
 }
 body::after{
   content:""; position:fixed; inset:0; pointer-events:none; z-index:-1;
   background-image:
     linear-gradient(to right, color-mix(in oklab, var(--border) 40%, transparent) 1px, transparent 1px),
     linear-gradient(to bottom, color-mix(in oklab, var(--border) 40%, transparent) 1px, transparent 1px);
-  background-size:40px 40px;
-  opacity:.35;
+  background-size:40px 40px; opacity:.35;
 }
 a{color:inherit; text-decoration:none}
 img{max-width:100%; height:auto; display:block; border-radius:12px; border:1px solid var(--border)}
@@ -35,7 +37,7 @@ section{position:relative}
 @media(min-width:760px){.grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(min-width:760px){.grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}}
 
-/* Theme: Sunset (کاملاً متفاوت از قبلی) */
+/* Theme: Sunset */
 html{
   --radius:14px; --radius-sm:10px;
   --shadow-1:0 10px 30px rgba(0,0,0,.28);
@@ -46,8 +48,8 @@ html{
   --paper:rgba(255,255,255,0.04); --card:rgba(255,255,255,0.06);
   --border:#1a2030; --text:#eef2fb; --muted:#a8b1c7;
 
-  --primary:#ff6b6b;     /* coral */
-  --primary-2:#f59e0b;   /* amber */
+  --primary:#ff6b6b; /* coral */
+  --primary-2:#f59e0b; /* amber */
   --accent:#a78bfa; --success:#34d399; --warn:#f59e0b;
   color-scheme:dark; scroll-behavior:smooth;
 }
@@ -64,22 +66,48 @@ html[data-theme="light"]{
 .header-inner{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 0}
 .logo{display:inline-flex; align-items:center; gap:10px; font-weight:800; letter-spacing:-.2px; font-size:1.15rem}
 .logo .mark{width:26px; height:26px; border-radius:6px; background:linear-gradient(135deg,var(--primary),var(--primary-2)); box-shadow:0 8px 20px color-mix(in oklab, var(--primary) 35%, transparent)}
-nav.primary-nav{display:none}
-@media(min-width:900px){
-  nav.primary-nav{display:flex; gap:12px}
-  nav.primary-nav a{padding:8px 12px; color:var(--muted); border-radius:999px; border:1px solid transparent}
-  nav.primary-nav a:hover{color:var(--text); border-color:var(--border); background:var(--paper)}
-}
-.nav-cta{background:linear-gradient(135deg,var(--primary),var(--primary-2)); color:#fff; border-radius:999px}
 
-/* Pill Theme Toggle */
+/* Pill Theme Toggle (RTL-safe) */
 .toggle-pill{display:flex; align-items:center; gap:8px; background:transparent; border:none; cursor:pointer; color:var(--muted)}
 .toggle-pill .pill{width:64px; height:28px; border-radius:999px; background:var(--paper); border:1px solid var(--border); position:relative; transition:background var(--speed), border-color var(--speed)}
-.toggle-pill .knob{position:absolute; top:2px; inset-inline-start:2px; width:24px; height:24px; border-radius:50%; background:linear-gradient(135deg,var(--primary),var(--primary-2)); box-shadow:0 6px 16px color-mix(in oklab, var(--primary) 30%, transparent); transition:transform var(--speed)}
-html[data-theme="light"] .toggle-pill .knob{ transform:translateX(36px) }
+.toggle-pill .knob{
+  position:absolute; top:2px;
+  inset-inline-start:2px; inset-inline-end:auto; /* نقطه شروع در حالت تیره (RTL = راست) */
+  width:24px; height:24px; border-radius:50%;
+  background:linear-gradient(135deg,var(--primary),var(--primary-2));
+  box-shadow:0 6px 16px color-mix(in oklab, var(--primary) 30%, transparent);
+  transition: inset-inline-start var(--speed), inset-inline-end var(--speed), background var(--speed), box-shadow var(--speed);
+}
+/* در حالت روشن، ناب به سمت دیگر (در RTL = چپ) می‌رود */
+html[data-theme="light"] .toggle-pill .knob{
+  inset-inline-start:auto; inset-inline-end:2px;
+}
 .toggle-pill .t-label{font-size:.9rem}
 .t-dark{display:inline} .t-light{display:none}
 html[data-theme="light"] .t-dark{display:none} html[data-theme="light"] .t-light{display:inline}
+
+/* Hamburger (mobile-only) */
+.hamburger{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:40px; height:40px; border-radius:10px;
+  background:var(--paper); border:1px solid var(--border); cursor:pointer; gap:4px;
+}
+.hamburger span{width:20px; height:2px; background:var(--text); border-radius:2px; display:block}
+@media(min-width:900px){ .hamburger{ display:none } }
+
+/* Mobile menu overlay */
+.mobile-menu{
+  position:fixed; inset:0; z-index:80;
+  background:color-mix(in oklab, var(--bg) 94%, transparent);
+  backdrop-filter: blur(8px);
+  display:none;
+}
+.mobile-menu.open{ display:block }
+.mobile-menu .menu-panel{ padding:16px 0 }
+.mobile-menu a{
+  display:block; padding:12px 14px; margin:8px 0;
+  background:var(--paper); border:1px solid var(--border); border-radius:12px;
+}
 
 /* Buttons */
 .btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:10px 16px; border-radius:12px; border:1px solid transparent; cursor:pointer; transition:transform var(--speed-fast), background var(--speed), border-color var(--speed), color var(--speed); font-weight:700}
@@ -90,7 +118,7 @@ html[data-theme="light"] .t-dark{display:none} html[data-theme="light"] .t-light
 .btn-secondary:hover{background:color-mix(in oklab, var(--paper) 60%, transparent)}
 .btn-ghost{background:transparent; color:var(--text); border:1px solid var(--border); padding:8px 12px; border-radius:10px}
 
-/* Hero (کاملاً متفاوت: شکل مورب + کلاژ) */
+/* Hero */
 .hero{position:relative; padding:64px 0 36px; overflow:hidden}
 .hero-bg{position:absolute; inset:0; z-index:-1; background:linear-gradient(135deg, color-mix(in oklab, var(--primary) 10%, transparent), transparent 60%)}
 .hero-inner{display:grid; grid-template-columns:1.05fr .95fr; gap:24px; align-items:center}
@@ -164,4 +192,41 @@ html[data-theme="light"] .t-dark{display:none} html[data-theme="light"] .t-light
 /* Reduce motion */
 @media(prefers-reduced-motion:reduce){
   .card:hover,.shine,.hero-inner,.collage img{animation:none !important; transition:none !important}
+}
+/* اکشن‌های هدر: افقی، بدون شکست، تراز وسط */
+.header-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:nowrap;
+  white-space:nowrap;
+}
+
+/* همبرگر موبایل نمایش، دسکتاپ مخفی (قبلاً داری اما برای اطمینان) */
+.hamburger{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:40px; height:40px; border-radius:10px;
+  background:var(--paper); border:1px solid var(--border); cursor:pointer; gap:4px;
+}
+.hamburger span{width:20px; height:2px; background:var(--text); border-radius:2px; display:block}
+@media(min-width:900px){ .hamburger{ display:none } }
+
+/* برای اینکه در موبایل خیلی فضا نگیره، لیبل‌های متنِ دکمه تم رو مخفی کن */
+@media(max-width:460px){
+  .toggle-pill .t-label{ display:none !important; }
+}
+
+/* دکمه تغییر تم (همون که قبلاً اصلاح کرده بودیم) */
+.toggle-pill{display:flex; align-items:center; gap:8px; background:transparent; border:none; cursor:pointer; color:var(--muted)}
+.toggle-pill .pill{width:64px; height:28px; border-radius:999px; background:var(--paper); border:1px solid var(--border); position:relative; transition:background var(--speed), border-color var(--speed)}
+.toggle-pill .knob{
+  position:absolute; top:2px;
+  inset-inline-start:2px; inset-inline-end:auto;
+  width:24px; height:24px; border-radius:50%;
+  background:linear-gradient(135deg,var(--primary),var(--primary-2));
+  box-shadow:0 6px 16px color-mix(in oklab, var(--primary) 30%, transparent);
+  transition: inset-inline-start var(--speed), inset-inline-end var(--speed), background var(--speed), box-shadow var(--speed);
+}
+html[data-theme="light"] .toggle-pill .knob{
+  inset-inline-start:auto; inset-inline-end:2px;
 }
